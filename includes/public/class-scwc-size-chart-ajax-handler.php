@@ -58,7 +58,7 @@ if ( ! class_exists( 'SCWC_Size_Chart_Ajax_Handler' ) ) :
             $bottom_notes    = get_post_meta( $post_id, 'scwc_bottom_notes', true );
             $style           = get_post_meta( $post_id, 'scwc_size_chart_style', true );
             $table_data_json = get_post_meta( $post_id, 'scwc_table_data', true );
-            $table_titles    = get_post_meta( $chart_id, 'scwc_table_titles', true );
+            $table_titles    = get_post_meta( $post_id, 'scwc_table_titles', true );
             $table_data      = json_decode( $table_data_json, true );
         
             ob_start();
