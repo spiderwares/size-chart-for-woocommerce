@@ -24,7 +24,7 @@ do_action( 'scwc_before_size_chart_display', $post_id ); ?>
 
         <?php foreach ( $table_data as $table_index => $single_table ) : ?>
             <?php if ( ! empty( $single_table ) && is_array( $single_table ) ) : ?>
-                <table class="scwc-size-chart-table option-<?php echo esc_attr($table_index); ?>" style="margin-bottom: 30px;">
+                <table class="scwc-size-chart-table option-<?php echo esc_attr($table_index); ?>" style="margin-bottom: 30px; <?php echo $table_index === 0 ? '' : 'display:none;'; ?>">
                     <?php foreach ( $single_table as $row_index => $row ) : ?>
                         <tr>
                             <?php foreach ( $row as $cell ) :

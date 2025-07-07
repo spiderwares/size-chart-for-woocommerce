@@ -8,6 +8,7 @@ jQuery(function ($) {
 
         eventHandlers() {
             $(document.body).on('click', '.scwc-size-charts-list-item', this.loadSizeChartContentHandler.bind(this)); 
+            $(document.body).on('click', '.scwc-table-options span', this.toggalTable.bind(this)); 
         }
 
         loadSizeChartContentHandler(e) {
@@ -65,8 +66,18 @@ jQuery(function ($) {
             });
         }
 
+        toggalTable(e) {
+            e.preventDefault();
+            var __this = $(e.currentTarget),
+                target =  __this.data('target');
+
+            $('.scwc-table-options span').removeClass('active');
+            __this.addClass('active');
+            $('.scwc-size-chart-table').hide();    
+            $('.' + target).show();
+        }
+
     }
 
     new SCWCSizeChartFrontend();
-
 });
