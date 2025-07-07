@@ -4,8 +4,8 @@
 **Requires at least:** 5.2  
 **Tested up to:** 6.8  
 **Requires PHP:** 7.4  
-**Version:** 1.0.1  
-**Stable tag:** 1.0.1  
+**Version:** 1.0.2  
+**Stable tag:** 1.0.2  
 **License:** GPLv2 or later  
 **License URI:** [https://www.gnu.org/licenses/gpl-2.0.html](https://www.gnu.org/licenses/gpl-2.0.html)  
 **Tags:** woocommerce, size chart, product size chart, size guide, chart popup  
@@ -103,6 +103,10 @@ Yes, the plugin is fully responsive and works great on mobile and desktop device
 5. **Display conditions and styling options** – Define rules and customize design
 
 ## Changelog
+
+### 1.0.2
+- Added support for multiple size guide tables.
+- now we can add multiple tables (e.g., one in inches, one in centimeters) for better flexibility.
 
 ### 1.0.1  
 - Update readme

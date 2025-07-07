@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Size Chart for WooCommerce
  * Description:       Easily create and display custom size charts on your WooCommerce product pages. Help customers choose the right fit, reduce returns, and enhance their shopping experience.
- * Version:           1.0.1
+ * Version:           1.0.2
  * Requires at least: 5.2
  * Requires PHP:      7.4
  * Author:            jthemesstudio
@@ -26,7 +26,7 @@ if ( ! defined( 'SCWC_BASENAME' ) ) :
 endif;
 
 if ( ! defined( 'SCWC_VERSION' ) ) :
-    define( 'SCWC_VERSION', '1.0.1' ); // Define the plugin version.
+    define( 'SCWC_VERSION', '1.0.2' ); // Define the plugin version.
 endif;
 
 if ( ! defined( 'SCWC_PATH' ) ) :
