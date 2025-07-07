@@ -21,8 +21,7 @@ endif;
             <p>
                 <?php 
                 // Translators: %s is replaced with a five-star rating HTML.
-                printf( 
-                    esc_html__( 'Thank you for choosing our plugin! If you’re happy with its performance, we’d be grateful if you could give us a five-star %s rating. Your support helps us improve and deliver even better features.', 'size-chart-for-woocommerce' ), 
+                printf(  esc_html__( 'Thank you for choosing our plugin! If you’re happy with its performance, we’d be grateful if you could give us a five-star %s rating. Your support helps us improve and deliver even better features.', 'size-chart-for-woocommerce' ), 
                     '<span style="color:#ff0000">&#9733;&#9733;&#9733;&#9733;&#9733;</span>' 
                 );
                 ?>
@@ -35,12 +34,6 @@ endif;
         </div>
     </div>
 
-    <!-- Content area for the active settings tab -->
-    <div class="scwc_admin_settings_page_content">
-        <?php
-        // Load the content for the currently active tab dynamically.
-        require_once SCWC_PATH . 'includes/admin/dashboard/views/about.php';
-        ?>
-    </div>
+    <div class="wp-list-table widefat jthemes_plugin_kit"></div>
 
 </div>

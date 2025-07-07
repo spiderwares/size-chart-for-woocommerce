@@ -31,9 +31,9 @@ if ( ! class_exists( 'SCWC_Size_Chart_Admin_Settings' ) ) :
                         'featherlight'      => esc_html__( 'Featherlight', 'size-chart-for-woocommerce' ),
                         'magnific'          => esc_html__( 'Magnific', 'size-chart-for-woocommerce' ),
                     ),
-                    'data_hide'  => '.popup_library_option',
-                    'desc'       => wp_kses_post( sprintf(
-                        __( 'Read more about %1$s and %2$s. We recommend using the popup library that is already used in your theme or other plugins.', 'size-chart-for-woocommerce' ),
+                    'data_hide'  => '.popup_library_option',                    
+                    // translators: 1: Link to Featherlight plugin documentation, 2: Link to Magnific Popup plugin documentation.
+                    'desc'       => wp_kses_post( sprintf( __( 'Read more about %1$s and %2$s. We recommend using the popup library that is already used in your theme or other plugins.', 'size-chart-for-woocommerce' ),
                         '<a href="https://noelboss.github.io/featherlight/" target="_blank">Featherlight</a>',
                         '<a href="https://dimsemenov.com/plugins/magnific-popup/" target="_blank">Magnific</a>'
                     ) ),

@@ -57,7 +57,8 @@ if ( ! class_exists( 'SCWC_Size_Chart_Ajax_Handler' ) ) :
             $top_description = get_post_meta( $post_id, 'scwc_top_description', true );
             $bottom_notes    = get_post_meta( $post_id, 'scwc_bottom_notes', true );
             $style           = get_post_meta( $post_id, 'scwc_size_chart_style', true );
-            $table_data_json = get_post_meta( $post_id, 'scwc_table_data', true ); // this was missing
+            $table_data_json = get_post_meta( $post_id, 'scwc_table_data', true );
+            $table_titles    = get_post_meta( $chart_id, 'scwc_table_titles', true );
             $table_data      = json_decode( $table_data_json, true );
         
             ob_start();
@@ -65,12 +66,14 @@ if ( ! class_exists( 'SCWC_Size_Chart_Ajax_Handler' ) ) :
             wc_get_template(
                 'size-chart/display-size-chart.php',
                 array(
+                    'post_id'         => $post_id,
                     'top_description' => $top_description,
                     'bottom_notes'    => $bottom_notes,
                     'table_data'      => $table_data,
                     'style'           => $style,
+                    'table_titles'    => $table_titles,
                 ),
-                'essential-kit-for-woocommerce/',
+                'size-chart-for-woocommerce/',
                 SCWC_TEMPLATE_PATH
             );
         

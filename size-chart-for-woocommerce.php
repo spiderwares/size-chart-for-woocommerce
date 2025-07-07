@@ -9,7 +9,6 @@
  * Author URI:        https://jthemes.com/
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Requires Plugins:  woocommerce
  * Text Domain:       size-chart-for-woocommerce
  *
  * @package Size Chart For Woocommerce

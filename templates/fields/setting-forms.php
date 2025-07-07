@@ -27,6 +27,7 @@ defined( 'ABSPATH' ) || exit; ?>
             <th colspan="2">
                 <?php settings_fields( $metaKey ); ?>
                 <?php do_settings_sections( 'scwc-product-compare' ); ?>
+                <?php settings_errors(); ?>
                 <?php submit_button(); ?>
             </th>
         </tr>

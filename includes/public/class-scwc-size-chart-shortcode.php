@@ -48,6 +48,7 @@ if ( ! class_exists( 'SCWC_Size_Chart_Shortcode' ) ) :
             $bottom_notes    = get_post_meta( $chart_id, 'scwc_bottom_notes', true );
             $style           = get_post_meta( $chart_id, 'scwc_size_chart_style', true );
             $table_data_raw  = get_post_meta( $chart_id, 'scwc_table_data', true );
+            $table_titles    = get_post_meta( $chart_id, 'scwc_table_titles', true );
             $table_data      = json_decode( $table_data_raw, true );
 
             // Start buffering the output
@@ -56,10 +57,12 @@ if ( ! class_exists( 'SCWC_Size_Chart_Shortcode' ) ) :
             wc_get_template(
                 'size-chart/display-size-chart.php',
                 array(
+                    'post_id'         => $chart_id,
                     'top_description' => $top_description,
                     'bottom_notes'    => $bottom_notes,
                     'table_data'      => $table_data,
                     'style'           => $style,
+                    'table_titles'    => $table_titles,
                 ),
                 'essential-kit-for-woocommerce/',
                 SCWC_TEMPLATE_PATH

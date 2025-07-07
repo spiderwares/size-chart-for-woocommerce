@@ -3,52 +3,60 @@
 jQuery(function ($) {
     class SCWC_Chart_Size_Handler {
         constructor() {
-            this.tableSelector  = '.scwc-table-form';
-            this.table          = $( this.tableSelector );
-            this.tableDataInput = $( '#scwc_table_data' );
+            this.tableSelector = '.scwc-table-form';
             this.init();
         }
 
         init() {
             this.bindEvents();
             this.initColorPickers(document);
-            this.updateTableData(); // Sync data on load
+            // Sync all tables on load
+            $(this.tableSelector).each((i, el) => {
+                this.updateTableData($(el));
+            });
         }
 
         bindEvents() {
-            $( document.body ).on( 'click', this.tableSelector + ' .scwc-add-row', this.addRow.bind( this ) );
-            $( document.body ).on( 'click', this.tableSelector + ' .scwc-remove-row', this.removeRow.bind( this ) );
-            $( document.body ).on( 'click', this.tableSelector + ' .scwc-add-col', this.addColumn.bind( this ) );
-            $( document.body ).on( 'click', this.tableSelector + ' .scwc-remove-col', this.removeColumn.bind( this ) );
-            $( document.body ).on( 'keyup', this.tableSelector + ' .scwc-cell-input', this.updateTableData.bind( this ) );
+            const tableSelector = this.tableSelector;
+
+            $( document.body ).on( 'click', tableSelector + ' .scwc-add-row', this.addRow.bind( this ) );
+            $( document.body ).on( 'click', tableSelector + ' .scwc-remove-row', this.removeRow.bind( this ) );
+            $( document.body ).on( 'click', tableSelector + ' .scwc-add-col', this.addColumn.bind( this ) );
+            $( document.body ).on( 'click', tableSelector + ' .scwc-remove-col', this.removeColumn.bind( this ) );
+            $( document.body ).on( 'keyup', tableSelector + ' .scwc-cell-input', (e) => {
+                    const table = $(e.currentTarget).closest(this.tableSelector);
+                    this.updateTableData(table);
+                } );
         }
 
         addRow(e) {
             e.preventDefault();
-            const row       = $(e.currentTarget).closest('tr'),
-                  newRow    = row.clone(true);
+            const table = $(e.currentTarget).closest(this.tableSelector),
+                row     = $(e.currentTarget).closest('tr'),
+                newRow  = row.clone(true);
 
             newRow.find('input').val('');
             row.after(newRow);
-            this.updateTableData();
+            this.updateTableData(table);
         }
 
         removeRow(e) {
             e.preventDefault();
-            const row = $(e.currentTarget).closest('tr');
-            if (this.table.find('tbody tr').length > 1) {
+            const table = $(e.currentTarget).closest(this.tableSelector),
+                row     = $(e.currentTarget).closest('tr');
+
+            if (table.find('tbody tr').length > 1) {
                 row.remove();
-                this.updateTableData();
+                this.updateTableData(table);
             }
         }
 
         addColumn(e) {
             e.preventDefault();
-        
-            const th        = $(e.currentTarget).closest('th'),
-                  colIndex  = th.index(); // This includes the first "Actions" <th>
-        
-            // Insert new column header after the current one
+            const table  = $(e.currentTarget).closest(this.tableSelector),
+                th       = $(e.currentTarget).closest('th'),
+                colIndex = th.index();
+
             const newHeader = $(`
                 <th>
                     <div class="scwc-col-actions">
@@ -58,42 +66,35 @@ jQuery(function ($) {
                 </th>
             `);
             th.after(newHeader);
-        
-            // Now update each row to insert a new <td> in the correct position
-            this.table.find('tbody tr').each(function () {
-                const cells     = $(this).find('td'),
-                      newCell   = $('<td><input type="text" name="scwc_table_cell[]" class="scwc-cell-input" value="" /></td>');
-        
-                // Adjust index because the first cell is for row actions
+
+            table.find('tbody tr').each(function () {
+                const cells = $(this).find('td');
+                const newCell = $('<td><input type="text" name="scwc_table_cell[]" class="scwc-cell-input" value="" /></td>');
                 cells.eq(colIndex).after(newCell);
             });
-        
-            this.updateTableData();
+
+            this.updateTableData(table);
         }
-            
 
         removeColumn(e) {
             e.preventDefault();
-            const th        = $(e.currentTarget).closest('th'),
-                  colIndex  = th.index();
+            const table = $(e.currentTarget).closest(this.tableSelector);
+            const th = $(e.currentTarget).closest('th');
+            const colIndex = th.index();
 
-            if (this.table.find('thead th').length > 2) {
-                // Remove column header
+            if (table.find('thead th').length > 2) {
                 th.remove();
-
-                // Remove column in each row
-                this.table.find('tbody tr').each(function () {
+                table.find('tbody tr').each(function () {
                     $(this).find('td').eq(colIndex).remove();
                 });
-
-                this.updateTableData();
+                this.updateTableData(table);
             }
         }
 
-        updateTableData() {
+        updateTableData(table) {
             const tableData = [];
 
-            this.table.find('tbody tr').each(function () {
+            table.find('tbody tr').each(function () {
                 const row = [];
                 $(this).find('td:not(:first-child)').each(function () {
                     const inputVal = $(this).find('input').val().trim();
@@ -101,8 +102,11 @@ jQuery(function ($) {
                 });
                 tableData.push(row);
             });
-
-            this.tableDataInput.val(JSON.stringify(tableData));
+            
+            const hiddenInput = table.closest('.scwc-table-container').find('.scwc-table-data');
+            if (hiddenInput.length) {
+                hiddenInput.val(JSON.stringify(tableData));
+            }
         }
 
         initColorPickers(context) {
@@ -112,6 +116,5 @@ jQuery(function ($) {
         }
     }
 
-    // Init class
     new SCWC_Chart_Size_Handler();
 });

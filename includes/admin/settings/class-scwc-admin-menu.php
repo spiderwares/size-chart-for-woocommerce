@@ -56,26 +56,15 @@ if ( ! class_exists( 'SCWC_Admin_Menu' ) ) :
          * @return mixed Sanitized input value.
          */
         public function sanitize_input( $input ) {
+            add_settings_error(
+                'scwc_size_chart_setting',
+                'scwc_size_chart_setting_updated',
+                esc_html__( 'Settings saved successfully.', 'size-chart-for-woocommerce' ),
+                'updated'
+            );
 
-            if ( is_array( $input ) ) :
-                $sanitized = [];
-
-                foreach ( $input as $key => $value ) :
-                    if ( is_array( $value ) ) :
-                        $sanitized[ $key ] = $this->sanitize_input( $value );
-                    elseif ( strpos( $key, 'textarea' ) !== false || strpos( $key, 'description' ) !== false || strpos( $key, 'content' ) !== false ) :
-                        $sanitized[ $key ] = sanitize_textarea_field( $value );
-                    else :
-                        $sanitized[ $key ] = sanitize_text_field( $value );
-                    endif;
-                endforeach;
-                return $sanitized;
-            endif;
-
-            return sanitize_text_field( $input );
+            return $input;
         }
-      
-        
 
         /**
          * Add submenus to the "JThemes" menu.
@@ -84,7 +73,7 @@ if ( ! class_exists( 'SCWC_Admin_Menu' ) ) :
         public function admin_menu() {
             // Add Quick View submenu
             add_submenu_page( 
-                'scwc_jthemes', 
+                'jthemes', 
                 esc_html__( 'Size Chart', 'size-chart-for-woocommerce' ), 
                 esc_html__( 'Size Chart', 'size-chart-for-woocommerce' ), 
                 'manage_options', 

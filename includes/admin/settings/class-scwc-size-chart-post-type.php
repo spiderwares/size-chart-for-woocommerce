@@ -118,7 +118,8 @@ if ( ! class_exists( 'SCWC_Size_Chart_Post_Type' ) ) :
             $post_id            = $post->ID;
             $top_description    = get_post_meta( $post_id, 'scwc_top_description', true );
             $bottom_notes       = get_post_meta( $post_id, 'scwc_bottom_notes', true );
-            $table_data         = get_post_meta( $post_id, 'scwc_table_data', true ) ?: '[[""]]';
+            $table_data         = get_post_meta( $post_id, 'scwc_table_data', true ) ?: '[[[""]]]';
+            $table_title        = get_post_meta( $post_id, 'scwc_table_titles', true );
             $table_data_arr     = json_decode( $table_data );
 
             wc_get_template(
@@ -129,8 +130,9 @@ if ( ! class_exists( 'SCWC_Size_Chart_Post_Type' ) ) :
                     'bottom_notes'      => $bottom_notes,
                     'table_data'        => $table_data,
                     'table_data_arr'    => $table_data_arr,
+                    'table_title'       => $table_title
                 ),
-                'essential-kit-for-woocommerce/',
+                'size-chart-for-woocommerce/',
                 SCWC_TEMPLATE_PATH
             );
             
@@ -291,12 +293,23 @@ if ( ! class_exists( 'SCWC_Size_Chart_Post_Type' ) ) :
             endif;
 
             // Save table data if valid JSON.
-            if ( isset( $_POST['scwc_table_data'] ) ) :
-                $raw_data   = wp_unslash( $_POST['scwc_table_data'] ); // Unslash first
-                $table_data = sanitize_textarea_field( $raw_data ); // Sanitize input
-                if ( json_decode( $table_data ) !== null ) :
-                    update_post_meta( $post_id, 'scwc_table_data', $table_data );
-                endif;
+            if ( isset( $_POST['scwc_table_data'] ) && is_array( $_POST['scwc_table_data'] ) ) :
+                $tables_data = [];
+                foreach ( $_POST['scwc_table_data'] as $raw_json ) :
+                    $unslashed  = wp_unslash( $raw_json ); 
+                    $sanitized  = sanitize_text_field( $unslashed );
+                    $decoded    = json_decode( $sanitized, true );
+
+                    if ( is_array( $decoded ) ) :
+                        $tables_data[] = $decoded;
+                    endif;
+                endforeach;
+                update_post_meta( $post_id, 'scwc_table_data', wp_json_encode( $tables_data ) );
+            endif;
+
+            // Save table title
+            if ( isset( $_POST['scwc_table_titles'] ) && is_array( $_POST['scwc_table_titles'] ) ) :
+                update_post_meta( $post_id, 'scwc_table_titles', $_POST['scwc_table_titles'] );
             endif;
 
             // --- Save Display Rules ---
