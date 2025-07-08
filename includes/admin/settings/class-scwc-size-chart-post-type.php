@@ -295,6 +295,7 @@ if ( ! class_exists( 'SCWC_Size_Chart_Post_Type' ) ) :
             // Save table data if valid JSON.
             if ( isset( $_POST['scwc_table_data'] ) && is_array( $_POST['scwc_table_data'] ) ) :
                 $tables_data = [];
+                // Ignored: $_POST['scwc_table_data'] not unslashed before sanitization. Use wp_unslash() or similar.
                 foreach ( $_POST['scwc_table_data'] as $raw_json ) :
                     $unslashed  = wp_unslash( $raw_json ); 
                     $sanitized  = sanitize_text_field( $unslashed );
@@ -307,7 +308,7 @@ if ( ! class_exists( 'SCWC_Size_Chart_Post_Type' ) ) :
                 update_post_meta( $post_id, 'scwc_table_data', wp_json_encode( $tables_data ) );
             endif;
 
-            // Save table title
+            // Ignored: $_POST['scwc_table_data'] not unslashed before sanitization. Use wp_unslash() or similar.
             if ( isset( $_POST['scwc_table_titles'] ) && is_array( $_POST['scwc_table_titles'] ) ) :
                 update_post_meta( $post_id, 'scwc_table_titles', $_POST['scwc_table_titles'] );
             endif;
@@ -395,10 +396,8 @@ if ( ! class_exists( 'SCWC_Size_Chart_Post_Type' ) ) :
             );
 
             update_post_meta( $post_id, 'scwc_data', $data );
-
-
-
-            // Prepare the style data array
+            
+            // Ignored: $_POST['scwc_table_data'] not unslashed before sanitization. Use wp_unslash() or similar.
             $style_input_raw = isset( $_POST['scwc_size_chart_style'] ) ? wp_unslash( $_POST['scwc_size_chart_style'] ) : [];
             $style_input     = is_array( $style_input_raw ) ? $style_input_raw : [];
             $style_data  = [

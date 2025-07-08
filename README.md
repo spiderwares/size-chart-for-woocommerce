@@ -4,8 +4,8 @@
 **Requires at least:** 5.2  
 **Tested up to:** 6.8  
 **Requires PHP:** 7.4  
-**Version:** 1.0.2  
-**Stable tag:** 1.0.2  
+**Version:** 2.0.0 
+**Stable tag:** 2.0.0 
 **License:** GPLv2 or later  
 **License URI:** [https://www.gnu.org/licenses/gpl-2.0.html](https://www.gnu.org/licenses/gpl-2.0.html)  
 **Tags:** woocommerce, size chart, product size chart, size guide, chart popup  

@@ -160,7 +160,7 @@ if ( ! class_exists( 'SCWC_Dashboard' ) ) {
 					wp_send_json_error(
 						sprintf(
 							/* translators: %s: Plugin website URL */
-							__( 'Error loading kit. Visit: %s', 'multicurrency-for-woocommerce' ),
+							__( 'Error loading kit. Visit: %s', 'size-chart-for-woocommerce' ),
 							'<a href="https://spiderwares.com" target="_blank">spiderwares.com</a>'
 						)
 					);
@@ -193,7 +193,7 @@ if ( ! class_exists( 'SCWC_Dashboard' ) ) {
 
 			// Bail if no data.
 			if ( empty( $plugins ) ) :
-				wp_send_json_error( __( 'No plugin data found.', 'multicurrency-for-woocommerce' ) );
+				wp_send_json_error( __( 'No plugin data found.', 'size-chart-for-woocommerce' ) );
 			endif;
 
 			// Sort plugins by active installs.
@@ -232,14 +232,14 @@ if ( ! class_exists( 'SCWC_Dashboard' ) ) {
 
 			if ( $exists ) :
 				$url  = $active ? $this->jthemes_plugin_link( 'deactivate', $slug, $file ) : $this->jthemes_plugin_link( 'activate', $slug, $file );
-				$text = $active ? __( 'Deactivate', 'multicurrency-for-woocommerce' ) : __( 'Activate', 'multicurrency-for-woocommerce' );
+				$text = $active ? __( 'Deactivate', 'size-chart-for-woocommerce' ) : __( 'Activate', 'size-chart-for-woocommerce' );
 				echo '<a href="' . esc_url( $url ) . '" class="button">' . esc_html( $text ) . '</a>';
 			else :
 				$url = wp_nonce_url( self_admin_url( "update.php?action=install-plugin&plugin={$slug}" ), "install-plugin_{$slug}" );
-				echo '<a href="' . esc_url( $url ) . '" class="button install-now">' . esc_html__( 'Install Now', 'multicurrency-for-woocommerce' ) . '</a>';
+				echo '<a href="' . esc_url( $url ) . '" class="button install-now">' . esc_html__( 'Install Now', 'size-chart-for-woocommerce' ) . '</a>';
 			endif;
 
-			echo '</li><li><a href="' . esc_url( $link ) . '" class="thickbox open-plugin-details-modal" title="' . esc_attr( $name ) . '">' . esc_html__( 'More Details', 'multicurrency-for-woocommerce' ) . '</a></li></ul></div>';
+			echo '</li><li><a href="' . esc_url( $link ) . '" class="thickbox open-plugin-details-modal" title="' . esc_attr( $name ) . '">' . esc_html__( 'More Details', 'size-chart-for-woocommerce' ) . '</a></li></ul></div>';
 			echo '<div class="desc column-description"><p>' . esc_html( $desc ) . '</p></div></div><div class="plugin-card-bottom">';
 
 			if ( isset( $plugin['rating'], $plugin['ratings'] ) ) :
@@ -255,15 +255,15 @@ if ( ! class_exists( 'SCWC_Dashboard' ) ) {
 			endif;
 
 			if ( isset( $plugin['version'] ) ) :
-				echo '<div class="column-updated"><strong>' . esc_html__( 'Version:', 'multicurrency-for-woocommerce' ) . '</strong> ' . esc_html( $plugin['version'] ) . '</div>';
+				echo '<div class="column-updated"><strong>' . esc_html__( 'Version:', 'size-chart-for-woocommerce' ) . '</strong> ' . esc_html( $plugin['version'] ) . '</div>';
 			endif;
 
 			if ( isset( $plugin['active'] ) ) :
-				echo '<div class="column-downloaded">' . esc_html( number_format_i18n( $plugin['active'] ) ) . esc_html__( '+ Active Installations', 'multicurrency-for-woocommerce' ) . '</div>';
+				echo '<div class="column-downloaded">' . esc_html( number_format_i18n( $plugin['active'] ) ) . esc_html__( '+ Active Installations', 'size-chart-for-woocommerce' ) . '</div>';
 			endif;
 
 			if ( isset( $plugin['updated'] ) ) :
-				echo '<div class="column-compatibility"><strong>' . esc_html__( 'Last Updated:', 'multicurrency-for-woocommerce' ) . '</strong> ' . esc_html( human_time_diff( $plugin['updated'] ) ) . ' ' . esc_html__( 'ago', 'multicurrency-for-woocommerce' ) . '</div>';
+				echo '<div class="column-compatibility"><strong>' . esc_html__( 'Last Updated:', 'size-chart-for-woocommerce' ) . '</strong> ' . esc_html( human_time_diff( $plugin['updated'] ) ) . ' ' . esc_html__( 'ago', 'size-chart-for-woocommerce' ) . '</div>';
 			endif;
 
 			echo '</div></div>';
