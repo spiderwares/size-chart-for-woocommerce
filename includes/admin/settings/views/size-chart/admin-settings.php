@@ -81,6 +81,13 @@ if ( ! class_exists( 'SCWC_Size_Chart_Admin_Settings' ) ) :
                     'default'    => 'Size Charts',
                     'desc'       => esc_html__( 'Customize the label for the size chart link.', 'size-chart-for-woocommerce' ),
                 ),
+                'display_title' => array(
+                    'title'      => esc_html__( 'Hide Chart Title', 'size-chart-for-woocommerce' ),
+                    'field_type' => 'scwcswitch',
+                    'name'       => 'scwc_size_chart_setting[display_title]',
+                    'default'    => 'no',
+                    'desc'       => esc_html__( 'Enable to hide the title on the front end.', 'size-chart-for-woocommerce' ),
+                ),
             );
             
             return $fields = apply_filters( 'scwc_size_chart_general_fields', $fields );

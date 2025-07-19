@@ -4,17 +4,17 @@
 **Requires at least:** 5.2  
 **Tested up to:** 6.8  
 **Requires PHP:** 7.4  
-**Version:** 2.0.0 
-**Stable tag:** 2.0.0 
+**Version:** 2.0.2 
+**Stable tag:** 2.0.2 
 **License:** GPLv2 or later  
 **License URI:** [https://www.gnu.org/licenses/gpl-2.0.html](https://www.gnu.org/licenses/gpl-2.0.html)  
-**Tags:** woocommerce, size chart, product size chart, size guide, chart popup  
+**Tags:** woocommerce, size chart, product size chart, size guide, size table  
 
-Add responsive size charts to WooCommerce products with popups, display rules & styling. Reduce returns & boost buyer confidence.
+Add responsive size charts to WooCommerce products with popups, tabs, and rules. Help customers choose the right size and reduce returns.
 
 ## Description
 
-Size Chart for WooCommerce is the ultimate plugin to help your customers choose the right size before checkout. Add clean, responsive size charts to your product pages with popups, tabs, or shortcodes. Whether you're selling apparel, footwear, or accessories, this plugin reduces returns and boosts buyer confidence. Customize chart content, placement, and styles with ease. Assign charts to specific products, categories, tags, or shipping classes — all without writing code. Fully compatible with any theme and optimized for mobile devices.
+Size Chart for WooCommerce helps your store minimize returns and increase buyer trust by providing clear, responsive size guides on your product pages. Whether you're selling clothes, shoes, or accessories, customers can easily view accurate sizing information before checkout. Easily create unlimited size charts with flexible layouts, add top and bottom descriptions, and style them to match your store’s branding. Display charts in popups (Featherlight or Magnific), product tabs, or custom locations using shortcodes. Target size charts to specific products, categories, tags, or shipping classes using powerful display rules. Show different charts for different product types like Simple or Variable. you can now create multiple charts per product (e.g., inches and centimeters) and let users switch between them for better clarity.
 
 ## Presentation
 
@@ -41,6 +41,7 @@ Size Chart for WooCommerce is the ultimate plugin to help your customers choose 
 ## Pro Features
 
 ⭐ Display size charts using advanced combined logic — show charts based on multiple criteria at once (product category, tags, shipping class) for precise targeting
+⭐ Support for multiple size chart tables — add different charts for various units (e.g., inches, centimeters) or product types for ultimate flexibility
 ⭐ Unlock detailed display rules to control chart visibility by:
 ⭐ Product Type (Simple, Variable, Grouped, External)
 ⭐ Product Visibility (Visible, Hidden, Featured)
@@ -104,7 +105,10 @@ Yes, the plugin is fully responsive and works great on mobile and desktop device
 
 ## Changelog
 
-### 1.0.2
+### 2.0.2
+- Added an option to hide the size chart title on the frontend.
+
+### 2.0.0
 - Added support for multiple size guide tables.
 - now we can add multiple tables (e.g., one in inches, one in centimeters) for better flexibility.
 

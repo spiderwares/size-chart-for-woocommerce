@@ -260,7 +260,7 @@ if ( ! class_exists( 'SCWC_Size_Chart_Frontend' ) ) :
             endif;
 
             $matching_charts = $this->get_matching_size_charts( $product->get_id() );
-
+            $display_title   = isset( $this->setting['display_title'] ) ? $this->setting['display_title'] : 'no';
             if ( ! empty( $matching_charts ) ) :
                 echo '<div class="scwc-size-charts-list">';
                 echo '<span class="scwc-size-charts-list-label">' . ( isset( $this->setting['label'] ) ? esc_html( $this->setting['label'] ) . ':' : esc_html__( 'Size Charts', 'size-chart-for-woocommerce' ) ) . '</span>';
@@ -269,8 +269,8 @@ if ( ! class_exists( 'SCWC_Size_Chart_Frontend' ) ) :
                     if ( isset( $chart_data['chart'] ) && $chart_data['chart'] instanceof WP_Post ) :
                         $chart_id    = (int) $chart_data['chart']->ID;
                         $chart_title = esc_html( $chart_data['chart']->post_title );
-
-                        echo '<a class="scwc-btn scwc-size-charts-list-item" data-id="' . esc_attr( $chart_id ) . '">' . esc_html( $chart_title ) . '</a>';
+                        $link_label = ( $display_title == 'no' ) ? $chart_title : esc_html__( 'Size Chart', 'size-chart-for-woocommerce' );
+                        echo '<a class="scwc-btn scwc-size-charts-list-item" data-id="' . esc_attr( $chart_id ) . '">' . esc_html( $link_label ) . '</a>';
                     endif;
                 endforeach;
 
