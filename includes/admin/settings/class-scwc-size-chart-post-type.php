@@ -151,7 +151,7 @@ if ( ! class_exists( 'SCWC_Size_Chart_Post_Type' ) ) :
                 array(
                     'post_id' => $post->ID,
                 ),
-                'essential-kit-for-woocommerce/',
+                'size-chart-for-woocommerce/',
                 SCWC_TEMPLATE_PATH
             );
         }
@@ -191,7 +191,7 @@ if ( ! class_exists( 'SCWC_Size_Chart_Post_Type' ) ) :
                     'scwc_assign'    => $scwc_assign,
                     'scwc_condition' => $scwc_condition,
                 ),
-                'essential-kit-for-woocommerce/',
+                'size-chart-for-woocommerce/',
                 SCWC_TEMPLATE_PATH
             );
         }
@@ -229,7 +229,7 @@ if ( ! class_exists( 'SCWC_Size_Chart_Post_Type' ) ) :
                     'even_row_bgcolor'    => $even_row_bgcolor,
                     'even_row_color'      => $even_row_color,
                 ),
-                'essential-kit-for-woocommerce/',
+                'size-chart-for-woocommerce/',
                 SCWC_TEMPLATE_PATH
             );
         }

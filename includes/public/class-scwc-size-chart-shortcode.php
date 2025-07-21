@@ -64,7 +64,7 @@ if ( ! class_exists( 'SCWC_Size_Chart_Shortcode' ) ) :
                     'style'           => $style,
                     'table_titles'    => $table_titles,
                 ),
-                'essential-kit-for-woocommerce/',
+                'size-chart-for-woocommerce/',
                 SCWC_TEMPLATE_PATH
             );
 
