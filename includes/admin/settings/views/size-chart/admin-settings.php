@@ -38,25 +38,6 @@ if ( ! class_exists( 'SCWC_Size_Chart_Admin_Settings' ) ) :
                         '<a href="https://dimsemenov.com/plugins/magnific-popup/" target="_blank">Magnific</a>'
                     ) ),
                 ),
-                'effect' => array(
-                    'title'         => esc_html__( 'Effect', 'size-chart-for-woocommerce' ),
-                    'field_type'    => 'scwcselect',
-                    'name'          => 'scwc_size_chart_setting[effect]',
-                    'default'       => 'mfp-3d-unfold',
-                    'options'       => array(
-                        'mfp-fade'              => esc_html__( 'de', 'size-chart-for-woocommerce' ),
-                        'mfp-zoom-in'           => esc_html__( 'Zoom in', 'size-chart-for-woocommerce' ),
-                        'mfp-zoom-out'          => esc_html__( 'Zoom out', 'size-chart-for-woocommerce' ),
-                        'mfp-newspaper">'       => esc_html__( 'wspaper', 'size-chart-for-woocommerce' ),
-                        'mfp-move-horizontal'   => esc_html__( 'Move horizontal', 'size-chart-for-woocommerce' ),
-                        'mfp-move-from-top'     => esc_html__( 'Move from top', 'size-chart-for-woocommerce' ),
-                        'mfp-3d-unfold'         => esc_html__( '3d unfold', 'size-chart-for-woocommerce' ),
-                        'mfp-slide-bottom'      => esc_html__( 'Slide bottom', 'size-chart-for-woocommerce' ),
-                    ),
-                    'style'         => 'popup_library.magnific',
-                    'extra_class'   => 'popup_library_option magnific',
-                    'desc'          => esc_html__( 'Effect for popup.', 'size-chart-for-woocommerce' ),
-                ),
                 'position' => array(
                     'title'      => esc_html__( 'Position', 'size-chart-for-woocommerce' ),
                     'field_type' => 'scwcselect',

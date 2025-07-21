@@ -35,6 +35,7 @@ Size Chart for WooCommerce helps your store minimize returns and increase buyer 
 ⭐ Target specific categories or individual products for chart display
 ⭐ Display charts based on visibility (featured, hidden) to control what customers see
 ⭐ Target products by shipping class or product tags for flexible display logic
+⭐ Option to hide the size chart title on the frontend
 ⭐ Style the table with custom header and row colors
 ⭐ Fully responsive design — charts look great on all devices
 
